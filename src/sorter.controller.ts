@@ -1,5 +1,6 @@
-import { Controller, Post } from '@nestjs/common';
+import { Body, Controller, Post } from '@nestjs/common';
 import { SorterService } from './sorter.service';
+import { SortNumberDto } from './dto/SortNumberDto';
 
 // /sorter
 @Controller('sorter')
@@ -8,14 +9,19 @@ export class SorterController {
 
   // /sorter/sort-ascending
   @Post('sortascending')
-  sortAscending(): Array<number> /*: restituisce questo tipo ed la stessa cosa con number[] */ {
+  sortAscending(
+    @Body() sortNumberDto: SortNumberDto,
+  ): Array<number> /*: restituisce questo tipo ed la stessa cosa con number[] */ {
     // const sorter = new SorterService();
-    return this.sorter.sortAscending([1, 2, 3]);
+    return this.sorter.sortAscending(sortNumberDto.arrayToSort);
   }
 
   // /sorter/sort-ascending
   @Post('sortdescending')
-  sortDescending(): Array<number> /*: restituisce questo tipo ed la stessa cosa con number[] */ {
-    return [];
+  sortDescending(
+    @Body() sortNumberDto: SortNumberDto,
+  ): Array<number> /*: restituisce questo tipo ed la stessa cosa con number[] */ {
+    // const sorter = new SorterService();
+    return this.sorter.sortDescending(sortNumberDto.arrayToSort);
   }
 }
