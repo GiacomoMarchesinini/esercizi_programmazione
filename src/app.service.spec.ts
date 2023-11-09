@@ -13,15 +13,39 @@ describe('SorterService', () => {
   });
 
   describe('sort', () => {
-    it('should sort ascending the array', () => {
-      //prepare
-      const arrayToSort = [2, 3, 1];
-
+    it.each([
+      [[], []], // caso limite
+      [[1], [1]],
+      [
+        [1, 2],
+        [1, 2],
+      ],
+      [
+        [2, 1],
+        [1, 2],
+      ],
+      [
+        [3, 2, 1],
+        [1, 2, 3],
+      ],
+      [
+        [1, 2, 3],
+        [1, 2, 3],
+      ],
+      [
+        [3, 1, 2],
+        [1, 2, 3],
+      ],
+      [
+        [9, 8, 7, 6, 5, 4, 3, 2, 1],
+        [1, 2, 3, 4, 5, 6, 7, 8, 9],
+      ],
+    ])('should sort ascending the array %p', (arrayToSort, expectedArray) => {
       //act
       const sortedArray = sorterService.sortAscending(arrayToSort);
 
       //assert
-      expect(sortedArray).toBe([1, 2, 3]);
+      expect(sortedArray).toEqual(expectedArray);
     });
   });
 });

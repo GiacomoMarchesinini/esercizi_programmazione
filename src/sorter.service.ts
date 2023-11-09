@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Injectable } from '@nestjs/common';
 
 @Injectable()
@@ -9,45 +10,31 @@ export class SorterService {
   }
 
   sortAscending(a: Array<number>): Array<number> {
-    
-    let end = a.length - 1;
-
-for (let i = 0; i < end; i++) {
-for (let j = i + 1; j < a.length; j++) {
-
-if (a[i] > a[j]) {
-let n = a[i]
-a[i] = a[j];
-a[j] = n;
-         }
+    const end = a.length - 1;
+    for (let i = 0; i < end; i++) {
+      for (let j = i + 1; j < a.length; j++) {
+        if (a[i] > a[j]) {
+          const n = a[i];
+          a[i] = a[j];
+          a[j] = n;
+        }
       }
-  }
- return a;
-  }
-
-  sortDescending(arrayToSort: Array<number>): Array<number> {
-    return arrayToSort;
+    }
+    return a;
   }
 
-increase(a) {
-  
-}
+  sortDescending(a: Array<number>): Array<number> {
+    const end = a.length - 1;
 
-decrease(a) {
-  let end = a.length - 1;
-
-for (let i = 0; i < end; i++) {
-for (let j = i + 1; j < a.length; j++) {
-
-if (a[i] < a[j]) {
-   let n = a[i]
-   a[i] = a[j];
-  a[j] = n;
-          }
+    for (let i = 0; i < end; i++) {
+      for (let j = i + 1; j < a.length; j++) {
+        if (a[i] < a[j]) {
+          const n = a[i];
+          a[i] = a[j];
+          a[j] = n;
+        }
       }
+    }
+    return a;
   }
-return a;
-}
-
-
 }
