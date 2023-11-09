@@ -1,8 +1,4 @@
 {
-  "eslint.workingDirectories": ["motion-client", "motion-chat"],
   "editor.formatOnSave": true,
-  "javascript.suggestionActions.enabled": false,
-  "jest.autoRun": "off",
-  "html.validate.scripts": false,
-  "editor.defaultFormatter": "esbenp.prettier-vscode"
+  "jest.autoRun": "off"
 }
